@@ -30,8 +30,9 @@ Database
 Sqlite3 database is used in the development environment.
 The query for displaying all users in dbconsole is: SELECT * FROM Users;
 
+* Recent Modifications
+Added a Public view where any registered user can generate public posts which will be visible to all, along with the name of the author.
 * Ongoing Modifications
-Adding a Public page where any registered user can generate public posts which will be visible to all, along with the name of the author.
 When creating articles, the user can choose to keep the article public, private or archived, archived articles are hidden even from the user and can be viewed from a separate page whose link is on the page visible to current user. This is to be done using concerns.
 
 Allowing comments from multiple users

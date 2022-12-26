@@ -9,26 +9,35 @@
       <%= f.submit %>
 </div><br><br>
 <% end %>
+
 <h2>Public Articles</h2>
 <% @articles.each do |article| %>
     <% if article.public? %>
         <%= link_to article.title, article_path(article) %><hr>
     <% end %>
 <% end %>
-<hr>
+<br><br>
+
 <h2>Private Articles</h2>
 <% @articles.each do |article| %>
     <% if article.private? %>
         <%= link_to article.title, article_path(article) %><hr>
     <% end %>
 <% end %>
-<hr>
-<h2>Archived Articles</h2>
-<% @articles.each do |article| %>
-    <% if article.archived? %>
-        <%= link_to article.title, article_path(article) %><hr>
+<br>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    Archived Articles
+  </button>
+  <ul class="dropdown-menu">
+    <% @articles.each do |article| %>
+        <% if article.archived? %>
+            <li><%= link_to article.title, article_path(article), class: "dropdown-item" %></li>
+        <% end %>
     <% end %>
-<% end %>
+  </ul>
+</div><br><br><br>
    
 <%= link_to 'Back', root_path, class: "btn btn-primary" %>
 <%= link_to 'New Article', new_article_path, class: "btn btn-primary" %><br><br><br>

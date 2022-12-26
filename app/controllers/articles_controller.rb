@@ -46,7 +46,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @main_user = @article.user_id
-    if @article.private? or @article.archived?
+    if (@article.private? or @article.archived?) && @main_user != current_user.id 
       redirect_to root_path, notice: "Not authorized to view this article" if @user.nil?
     end
 
