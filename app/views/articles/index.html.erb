@@ -9,9 +9,25 @@
       <%= f.submit %>
 </div><br><br>
 <% end %>
-
+<h2>Public Articles</h2>
 <% @articles.each do |article| %>
-    <%= link_to article.title, article_path(article) %><hr>
+    <% if article.public? %>
+        <%= link_to article.title, article_path(article) %><hr>
+    <% end %>
+<% end %>
+<hr>
+<h2>Private Articles</h2>
+<% @articles.each do |article| %>
+    <% if article.private? %>
+        <%= link_to article.title, article_path(article) %><hr>
+    <% end %>
+<% end %>
+<hr>
+<h2>Archived Articles</h2>
+<% @articles.each do |article| %>
+    <% if article.archived? %>
+        <%= link_to article.title, article_path(article) %><hr>
+    <% end %>
 <% end %>
    
 <%= link_to 'Back', root_path, class: "btn btn-primary" %>

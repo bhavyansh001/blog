@@ -1,12 +1,12 @@
 class ArticlesController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :correct_user, only: [:edit, :show, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def correct_user
     @user = current_user.articles.find_by(id: params[:id])
-    redirect_to root_path, notice: "Not authorized to view this article" if @user.nil?
-  end
+      redirect_to root_path, notice: "Not authorized to edit this article" if @user.nil?
+    end
 
   def index
     @articles = current_user.articles
@@ -45,6 +45,11 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @main_user = @article.user_id
+    if @article.private? or @article.archived?
+      redirect_to root_path, notice: "Not authorized to view this article" if @user.nil?
+    end
+
   end
 
   def destroy
@@ -56,6 +61,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :body, :user_id)
+    params.require(:article).permit(:title, :body, :status, :user_id)
   end
 end
