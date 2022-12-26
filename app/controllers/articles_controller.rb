@@ -10,6 +10,9 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = current_user.articles
+
+    @q = current_user.articles.ransack(params[:q])
+    @articles = @q.result(distinct: true)
   end
 
   def new
