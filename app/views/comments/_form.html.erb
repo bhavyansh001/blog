@@ -1,0 +1,13 @@
+<%= form_with model: [@article, @article.comments.build ] do |form| %>
+  <p>
+    <% form.label :name %><br>
+    <%= form.text_field :name, value: current_user.email %>
+  </p>
+  <p>
+    <% form.label :body %><br>
+    <%= form.text_area :body, placeholder: "Type your comment" %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

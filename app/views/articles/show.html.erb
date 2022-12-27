@@ -1,10 +1,28 @@
 <h1><%= @article.title %></h1>
 <hr>
-<p><%= @article.body %></p>
-
+<p><%= @article.body %></p><br>
 <% if current_user.id == @main_user %>
     <%= link_to 'Edit', edit_article_path, class: "btn btn-primary" %>
     <%= link_to 'Delete', article_path(@article), data: {turbo_method: :delete}, class: "btn btn-danger" %><br><br>
 <% end %>
-    <%= link_to 'Your list of articles', articles_path, class: "btn btn-info" %>
-    <%= link_to 'Back', root_path, class: "btn btn-primary" %>
+<%= link_to 'Your list of articles', articles_path, class: "btn btn-info" %>
+<%= link_to 'Back', root_path, class: "btn btn-primary" %><br><br>
+<%# Showing comments %>
+<%= render 'comments/comment' %>
+<%# Adding comments %>
+<h2>Add comment</h2>
+<%= render 'comments/form' %>
+
+<%# <form action="/articles/comments" accept-charset="UTF-8" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token >">
+  <div>
+    <input type="text" name="comment[title]" id="comment_title" value= "<%= current_user.email >" disabled= true >
+  </div>
+  <div>
+    <textarea name="comment[body]" id="comment_body" placeholder= "Type your comment" ></textarea>
+  </div>
+
+  <div>
+    <input type="submit" name="commit" value="Create Comment" data-disable-with="Create Comment">
+  </div>
+</form> %>

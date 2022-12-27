@@ -1,0 +1,10 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Comments</h5>
+    <% @comments.each do |comment| %>
+        <h6 class="card-subtitle mb-2 text-muted"><%= comment.name %></h6>
+        <p class="card-text"><%= comment.body %></p>
+        <hr>
+    <% end %>    
+  </div>
+</div>

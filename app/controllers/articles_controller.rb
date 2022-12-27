@@ -49,7 +49,7 @@ class ArticlesController < ApplicationController
     if (@article.private? or @article.archived?) && @main_user != current_user.id 
       redirect_to root_path, notice: "Not authorized to view this article" if @user.nil?
     end
-
+    @comments = @article.comments
   end
 
   def destroy
