@@ -12,17 +12,3 @@
 <%# Adding comments %>
 <h2>Add comment</h2>
 <%= render 'comments/form' %>
-
-<%# <form action="/articles/comments" accept-charset="UTF-8" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token >">
-  <div>
-    <input type="text" name="comment[title]" id="comment_title" value= "<%= current_user.email >" disabled= true >
-  </div>
-  <div>
-    <textarea name="comment[body]" id="comment_body" placeholder= "Type your comment" ></textarea>
-  </div>
-
-  <div>
-    <input type="submit" name="commit" value="Create Comment" data-disable-with="Create Comment">
-  </div>
-</form> %>
